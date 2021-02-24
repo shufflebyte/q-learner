@@ -7,8 +7,8 @@ import time
 import numpy as np
 import pickle
 
-decay = True
-load_from_file = False
+decay = True            # use decay of alpha, gamma, epsilon
+load_from_file = True   # false: training, true: use brain from q_table pickle
 
 
 def main(argv):

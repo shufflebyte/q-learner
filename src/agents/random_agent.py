@@ -1,19 +1,16 @@
 import gym
-from utils import print_step
 import time
 import os
+from utils import print_step
 
 
 class RandomAgent:
-
     def __init__(self, env):
         self.env = env
 
     def random_inference(self):
         steps = 0
-        penalties, reward = 0, 0
-        frames = []  # for animation
-        cum_reward = 0
+        total_reward = 0
 
         done = False
         self.env.reset()
@@ -22,13 +19,10 @@ class RandomAgent:
             action = self.env.action_space.sample()
             state, reward, done, info = self.env.step(action)
 
-            if reward == -10:
-                penalties += 1
-
             steps += 1
-            cum_reward += reward
+            total_reward += reward
             self.env.render()
-            print_step(steps, state, action, reward, cum_reward)
+            print_step(steps, state, action, reward, total_reward)
             time.sleep(0.25)
             os.system('clear')
 
